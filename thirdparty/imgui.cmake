@@ -37,6 +37,7 @@ if(NOT imgui_POPULATED)
         "${imgui_SOURCE_DIR}"
         "${imgui_SOURCE_DIR}/..")
 
+    target_compile_definitions(imgui PRIVATE -DIMGUI_IMPL_OPENGL_LOADER_GLAD)
     target_link_libraries(imgui glad glfw)
 
     set_target_properties(imgui PROPERTIES FOLDER "thirdparty/imgui")
