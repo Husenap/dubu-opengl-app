@@ -1,6 +1,6 @@
-# cmake-project-template
+![Windows](https://github.com/Husenap/dubu-opengl-app-template/workflows/Windows/badge.svg)
+![Ubuntu](https://github.com/Husenap/dubu-opengl-app-template/workflows/Ubuntu/badge.svg)
 
-Uses CMake for generating a basic project template.
+# OpenGL App Template
 
-![Windows](https://github.com/Husenap/cmake-project-template/workflows/Windows/badge.svg)
-![Ubuntu](https://github.com/Husenap/cmake-project-template/workflows/Ubuntu/badge.svg)
+A template for creating a C++ app using GLFW+OpenGL+ImGui.
