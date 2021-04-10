@@ -18,6 +18,7 @@ option(${PROJECT_NAME}_BUILD_TESTS
 
 include("thirdparty/dubu_log.cmake")
 include("thirdparty/dubu_window.cmake")
+include("thirdparty/glm.cmake")
 add_subdirectory("thirdparty/glad")
 include("thirdparty/imgui.cmake")
 

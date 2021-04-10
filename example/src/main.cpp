@@ -1,9 +1,9 @@
 #include <dubu_opengl_app/dubu_opengl_app.hpp>
 #include <glad/gl.h>
+#include <glm/glm.hpp>
 #include <imgui/imgui.h>
 
-constexpr int WIDTH  = 2048;
-constexpr int HEIGHT = 2048;
+constexpr glm::ivec2 SIZE{2048, 2048};
 
 class App : public dubu::opengl_app::AppBase {
 public:
@@ -50,8 +50,8 @@ protected:
 		glTexImage2D(GL_TEXTURE_2D,
 		             0,
 		             GL_RGBA32F,
-		             WIDTH,
-		             HEIGHT,
+		             SIZE.x,
+		             SIZE.y,
 		             0,
 		             GL_RGBA,
 		             GL_FLOAT,
@@ -63,7 +63,7 @@ protected:
 	virtual void Update() override {
 		glUseProgram(mProgram);
 		glUniform1f(0, mOffset);
-		glDispatchCompute(WIDTH, HEIGHT, 1);
+		glDispatchCompute(SIZE.x, SIZE.y, 1);
 
 		glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 
@@ -73,11 +73,12 @@ protected:
 			ImVec2 offset    = regionMin;
 			ImVec2 regionSize =
 			    ImVec2(regionMax.x - regionMin.x, regionMax.y - regionMin.y);
-			ImVec2 imageSize = {WIDTH, HEIGHT};
+			ImVec2 imageSize = {static_cast<float>(SIZE.x),
+			                    static_cast<float>(SIZE.y)};
 
 			float regionRatio = regionSize.x / regionSize.y;
 			float imageRatio =
-			    static_cast<float>(WIDTH) / static_cast<float>(HEIGHT);
+			    static_cast<float>(SIZE.x) / static_cast<float>(SIZE.y);
 
 			if (regionRatio > imageRatio) {
 				imageSize.x *= regionSize.y / imageSize.y;

@@ -18,6 +18,7 @@ add_library(${target_name} STATIC ${src_files})
 target_link_libraries(${target_name}
     dubu_log
     dubu_window
+    glm
     glad
     imgui
     compiler_features
