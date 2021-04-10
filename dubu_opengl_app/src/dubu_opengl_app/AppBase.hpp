@@ -26,7 +26,15 @@ protected:
 	std::unique_ptr<dubu::window::GLFWWindow> mWindow;
 
 private:
+	void InitWindow();
+	void InitImGui();
+
+	void DrawDockSpace();
+
 	CreateInfo mCreateInfo;
+
+	dubu::event::Token mResizeToken;
+	dubu::event::Token mKeyPressToken;
 };
 
 }  // namespace dubu::opengl_app
