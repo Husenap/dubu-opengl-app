@@ -14,14 +14,14 @@ AppBase::AppBase(const CreateInfo& createInfo)
 void AppBase::Run() {
 	mWindow = std::move(std::make_unique<dubu::window::GLFWWindow>(
 	    dubu::window::GLFWWindow::CreateInfo{
-	        .width  = 1920,
-	        .height = 1080,
+	        .width  = mCreateInfo.width,
+	        .height = mCreateInfo.height,
 	        .title  = mCreateInfo.appName,
 	        .api    = dubu::window::GLFWWindow::Api::OpenGL,
 	    }));
 
 	glfwMakeContextCurrent(mWindow->GetGLFWHandle());
-	if (!gladLoadGL((GLADloadfunc)glfwGetProcAddress)) {
+	if (!gladLoadGL(reinterpret_cast<GLADloadfunc>(glfwGetProcAddress))) {
 		DUBU_LOG_FATAL("Failed to init glad");
 	}
 
@@ -51,7 +51,7 @@ void AppBase::Run() {
 		    }
 	    });
 
-	glViewport(0, 0, 1920, 1080);
+	glViewport(0, 0, mCreateInfo.width, mCreateInfo.height);
 	glfwSwapInterval(mCreateInfo.swapInterval);
 
 	Init();

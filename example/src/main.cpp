@@ -76,7 +76,8 @@ protected:
 			ImVec2 imageSize = {WIDTH, HEIGHT};
 
 			float regionRatio = regionSize.x / regionSize.y;
-			float imageRatio  = (float)WIDTH / (float)HEIGHT;
+			float imageRatio =
+			    static_cast<float>(WIDTH) / static_cast<float>(HEIGHT);
 
 			if (regionRatio > imageRatio) {
 				imageSize.x *= regionSize.y / imageSize.y;

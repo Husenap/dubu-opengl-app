@@ -7,8 +7,10 @@ namespace dubu::opengl_app {
 class AppBase {
 public:
 	struct CreateInfo {
-		std::string appName = "dubu-opengl-app";
-		int swapInterval = 0;
+		int         width        = 1920;
+		int         height       = 1080;
+		std::string appName      = "dubu-opengl-app";
+		int         swapInterval = 0;
 	};
 
 public:
