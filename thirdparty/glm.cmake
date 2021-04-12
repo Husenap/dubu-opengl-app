@@ -8,3 +8,7 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(glm)
+
+if(TARGET glm_shared)
+    set_target_properties(glm_shared PROPERTIES FOLDER "thirdparty/glm")
+endif()
